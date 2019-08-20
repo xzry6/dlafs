@@ -213,32 +213,32 @@ GstFlowReturn IELoader::read_model(std::string strModelXml,
     }
 
     std::map<std::string, std::string> networkConfig;
-    networkConfig[InferenceEngine::PluginConfigParams::KEY_LOG_LEVEL]
-        = InferenceEngine::PluginConfigParams::LOG_INFO;
-    networkConfig[VPU_CONFIG_KEY(HW_STAGES_OPTIMIZATION)] = CONFIG_VALUE(YES);
+    // networkConfig[InferenceEngine::PluginConfigParams::KEY_LOG_LEVEL]
+    //     = InferenceEngine::PluginConfigParams::LOG_INFO;
+    // networkConfig[VPU_CONFIG_KEY(HW_STAGES_OPTIMIZATION)] = CONFIG_VALUE(YES);
 
-    mModelType = modelType;
-    switch(modelType) {
-        case IE_MODEL_DETECTION:
-            networkConfig[VPU_CONFIG_KEY(NETWORK_CONFIG)] = "data=data,scale=64";
-            break;
-       case IE_MODEL_SSD:
-            // Get moblienet_ssd_config_xml file name based on strModelXml
-            config_xml = strModelXml.substr(0, strModelXml.rfind(".")) + std::string(".conf.xml");
-            networkConfig[VPU_CONFIG_KEY(NETWORK_CONFIG)] = "file=" + config_xml;
-            break;
-        case IE_MODEL_LP_RECOGNIZE:
-            break;
-        case IE_MODEL_YOLOTINYV2:
-            networkConfig[VPU_CONFIG_KEY(NETWORK_CONFIG)] = "data=input,scale=128";
-            break;
-        case IE_MODEL_GENERIC:
-            if(network_config.compare("null"))
-                networkConfig[VPU_CONFIG_KEY(NETWORK_CONFIG)] = network_config.c_str();
-            break;
-        default:
-            break;
-   }
+    // mModelType = modelType;
+    // switch(modelType) {
+    //     case IE_MODEL_DETECTION:
+    //         networkConfig[VPU_CONFIG_KEY(NETWORK_CONFIG)] = "data=data,scale=64";
+    //         break;
+    //    case IE_MODEL_SSD:
+    //         // Get moblienet_ssd_config_xml file name based on strModelXml
+    //         config_xml = strModelXml.substr(0, strModelXml.rfind(".")) + std::string(".conf.xml");
+    //         networkConfig[VPU_CONFIG_KEY(NETWORK_CONFIG)] = "file=" + config_xml;
+    //         break;
+    //     case IE_MODEL_LP_RECOGNIZE:
+    //         break;
+    //     case IE_MODEL_YOLOTINYV2:
+    //         networkConfig[VPU_CONFIG_KEY(NETWORK_CONFIG)] = "data=input,scale=128";
+    //         break;
+    //     case IE_MODEL_GENERIC:
+    //         if(network_config.compare("null"))
+    //             networkConfig[VPU_CONFIG_KEY(NETWORK_CONFIG)] = network_config.c_str();
+    //         break;
+    //     default:
+    //         break;
+    // }
 
     // Executable Network for inference engine
     ret = mIEPlugin->LoadNetwork(mExeNetwork, cnnNetwork, networkConfig, &resp);
