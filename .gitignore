@@ -1,3 +1,11 @@
-*.o
-*.so
-*.a
+**/*.o
+**/*.so
+**/*.a
+build/
+hddls_server_controller_receiver/controller/models/
+hddls_server_controller_receiver/package-lock.json
+hddls_server_controller_receiver/receiver/client_cert/
+hddls_server_controller_receiver/receiver/pipe_*/
+hddls_server_controller_receiver/server/.algocache.register
+hddls_server_controller_receiver/server/models/
+hddls_server_controller_receiver/server/thread.info
