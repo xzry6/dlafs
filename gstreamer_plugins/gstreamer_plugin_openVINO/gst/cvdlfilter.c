@@ -295,11 +295,12 @@ cvdl_filter_change_state (GstElement * element, GstStateChange transition)
                 pipeline_report_error_info(element,error_info);
                 g_free(error_info);
             }
-         } else {
-            char *error_info = "Failed to create algo config!";
-            pipeline_report_error_info(element,error_info);
-            g_print("%s\n", error_info);
          }
+         // else {
+         //    char *error_info = "Failed to create algo config!";
+         //    pipeline_report_error_info(element,error_info);
+         //    g_print("%s\n", error_info);
+         // }
 
          // start push buffer thread to push data to next element
          // It will be done in a task with  push_buffer_func()

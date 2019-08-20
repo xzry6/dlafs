@@ -314,15 +314,15 @@ static const gchar* parse_create_command(char *desc,  gint pipe_id, IPCClientHan
             if(json_get_string_d2(object, CVDLFILTER_NAME, "algopipeline", &algo_pipeline_desc)) {
                     GST_INFO("property - algopipeline = %s\n",algo_pipeline_desc);
                     std::string str_algo_pipeline_desc = std::string(algo_pipeline_desc);
-                    if(str_algo_pipeline_desc.size()<1) {
-                         algo_pipeline_desc = DEFAULT_ALGO_PIPELINE;
-                         //g_print("warning - get invalid algopipeline:%s , it will use default value: %s!\n",
-                         //   str_algo_pipeline_desc.c_str(),  algo_pipeline_desc);
-                         g_print("warning - get empty algopipeline, exit!\n");
-                         ipcclient_upload_error_info(ipc, "warning - get empty algopipeline, exit!\n");
-                         g_usleep(10000);
-                         exit(eErrorInvalideAlgopipeline);
-                     }
+                    // if(str_algo_pipeline_desc.size()<1) {
+                    //      algo_pipeline_desc = DEFAULT_ALGO_PIPELINE;
+                    //      //g_print("warning - get invalid algopipeline:%s , it will use default value: %s!\n",
+                    //      //   str_algo_pipeline_desc.c_str(),  algo_pipeline_desc);
+                    //      g_print("warning - get empty algopipeline, exit!\n");
+                    //      ipcclient_upload_error_info(ipc, "warning - get empty algopipeline, exit!\n");
+                    //      g_usleep(10000);
+                    //      exit(eErrorInvalideAlgopipeline);
+                    //  }
              } else { //default
                     algo_pipeline_desc = DEFAULT_ALGO_PIPELINE;
                     g_print("warning - failed to get algopipeline, exit!\n");
